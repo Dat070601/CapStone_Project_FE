@@ -1,4 +1,4 @@
-import { OrderState } from "../initialState/orderState";
+import { OrderState } from "../initialState/OrderState";
 import { createSlice } from "@reduxjs/toolkit";
 import { addOrderAsyncThunk, changeStatusOfOrderAsyncThunk, getOrderAsyncThunk, getOrderByCustomerIdAsyncThunk } from "../thunks/OrderThunk";
 
