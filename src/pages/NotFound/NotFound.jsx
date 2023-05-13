@@ -1,4 +1,4 @@
-import { Box, Heading, Text } from '@chakra-ui/react';
+import { Box, Container, Heading, Image, Text } from '@chakra-ui/react';
 import React from 'react';
 
 const NotFound = () => {
