@@ -2,9 +2,9 @@ import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import useLocalStorage from '../../hooks/useLocalStorage';
-import { cartSelector, decreaseProductQuantityInCart, fetchQuantityOfProduct, increaseProductQuantityInCart } from '../../stores/reducers/CartReducer';
+import { cartSelector, decreaseProductQuantityInCart, fetchQuantityOfProduct, increaseProductQuantityInCart, updateCartAmmount } from '../../stores/reducers/CartReducer';
 import { orderSelector } from '../../stores/reducers/OrderReducer';
-import { deleteProductInCartAsyncThunk, fetchCartAsyncThunk } from '../../stores/thunks/CartThunk';
+import { addProductToCartAsyncThunk, deleteProductInCartAsyncThunk, fetchCartAsyncThunk } from '../../stores/thunks/CartThunk';
 import { addOrderAsyncThunk, getOrderAsyncThunk, getOrderByCustomerIdAsyncThunk } from '../../stores/thunks/OrderThunk';
 import { createPaymentAsyncThunk } from '../../stores/thunks/PaymentThunk';
 import { paymentSelector } from '../../stores/reducers/PaymentReducer';
@@ -66,7 +66,7 @@ const CartViewModel = () => {
 	const handleToggleDeleteButton = () => {
 		setToggleDeleteButton(!toggleDeleteButton)
 	}
-	
+
 	const increase = (quantity) => {
 		dispatch(fetchQuantityOfProduct({
 			quantity
