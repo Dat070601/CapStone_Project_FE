@@ -7,6 +7,7 @@ import { BsPaypal } from 'react-icons/bs'
 import { Link, useNavigate } from 'react-router-dom';
 import { fetchGetProvince } from '../../api/address';
 import { useFormik } from 'formik';
+import ProductDetailViewModel from '../ProductDetail/ProductDetailViewModel';
 
 const Cart = () => {
 	const { 
@@ -32,6 +33,8 @@ const Cart = () => {
 		isLoadingDelete
 	} = CartViewModel();
 
+	const { addProductToCart } = ProductDetailViewModel();
+
 	const total = getTotalInCart(prepareOrderProduct)
 	const cartForm = useFormik(
 		{
@@ -48,6 +51,8 @@ const Cart = () => {
 				orderDetails: prepareToAddOrderProducts
 			})
 	}})
+
+	
 	return (
 		<Box margin="20px 0px 0px 0px" position={"relative"} height="87vh" bg={"gray.200"}>
 			<form onSubmit={cartForm.handleSubmit}>
@@ -142,7 +147,12 @@ const Cart = () => {
 													/>
 													<Button 
 														size={'sm'}
-														onClick={() => increase(cart.quantity)}
+														onClick={() => {
+															addProductToCart({
+															  bookId : cart.bookId,
+															  quantity : 1
+															})
+														}}
 													>
 														<Icon as={AiOutlinePlus}/>
 													</Button>
