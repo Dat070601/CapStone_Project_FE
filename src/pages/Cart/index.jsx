@@ -30,7 +30,8 @@ const Cart = () => {
 		handleToggleDeleteButton,
 		selectProductToDelete,
 		prepareToDeleteProducts,
-		isLoadingDelete
+		isLoadingDelete,
+		refetchCart
 	} = CartViewModel();
 
 	const { addProductToCart } = ProductDetailViewModel();
@@ -120,7 +121,7 @@ const Cart = () => {
 														id: cart.bookId,
 														title: cart.bookName,
 														quantity: cart.quantity,
-														total: cart.price,
+														total: cart.price * cart.quantity,
 													}, event) : selectProductToDelete({
 														bookId: cart.bookId
 													}, event)}
@@ -148,6 +149,7 @@ const Cart = () => {
 													<Button 
 														size={'sm'}
 														onClick={() => {
+															refetchCart()
 															addProductToCart({
 															  bookId : cart.bookId,
 															  quantity : 1
@@ -158,7 +160,7 @@ const Cart = () => {
 													</Button>
 												</HStack>
 											</Td>
-											<Td>{cart.price} đ</Td>
+											<Td>{new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND'}).format(cart.price * cart.quantity)}</Td>
 										</Tr>
 									);
 								})}
@@ -171,14 +173,13 @@ const Cart = () => {
 					{prepareOrderProduct.map(product => {
 						return (
 							<Box mt="5px" padding={"20px"} border={"white 1px solid"}>
-								<Text fontWeight={"medium"} color={COLOR}>{product.title}</Text>
-								<Text fontWeight={"light"} color={COLOR}>{product.variant}</Text>
+								<Text fontWeight={"medium"} color={COLOR}>Tên sách: {product.title}</Text>
 								<Text fontWeight={"light"} color={COLOR}>Số lượng: {product.quantity}</Text>
-								<Text mt="10px" fontWeight={"medium"}>{product.total} đ</Text>
+								<Text mt="10px" fontWeight={"medium"}>{new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND'}).format(product.total)} đ</Text>
 							</Box>
 						)
 					})}
-					<Text color={COLOR} fontWeight={"bold"} mt="10px">Tổng tiền: {total} đ</Text>
+					<Text color={COLOR} fontWeight={"bold"} mt="10px">Tổng tiền: {new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND'}).format(total)}</Text>
 					<Box mt="10px">
 						<Textarea id="message" name="message" value={cartForm.values.message} onChange={cartForm.handleChange} placeholder='message...' bg={"white"}/>
 					</Box>

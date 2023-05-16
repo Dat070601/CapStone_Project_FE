@@ -42,10 +42,19 @@ const CartViewModel = () => {
 		}));
 	}, [accessTokenSaved, dispatch]);
 
-	const selectProductAddToOrder = ({ id, title, variant, quantity, total }, event) => {
+	const refetchCart = () => {
+		setTimeout(() => {
+			dispatch(fetchCartAsyncThunk({
+				token: accessTokenSaved,
+				userId: params.userId
+			}))
+		}, 100)
+	}
+
+	const selectProductAddToOrder = ({ id, title, quantity, total }, event) => {
 		if (event.target.checked === true)
 		{
-			setPrepareOrderProduct([...prepareOrderProduct, { id, title, variant, quantity, total }])
+			setPrepareOrderProduct([...prepareOrderProduct, { id, title, quantity, total }])
 			setPrepareToAddOrderProduct([...prepareToAddOrderProducts, { bookId: id, quantity }])
 		} 
 		else
@@ -166,7 +175,9 @@ const CartViewModel = () => {
 		handleToggleDeleteButton,
 		selectProductToDelete,
 		prepareToDeleteProducts,
-		isLoadingDelete
+		isLoadingDelete,
+		fetchCartAsyncThunk,
+		refetchCart
 	};
 };
 
