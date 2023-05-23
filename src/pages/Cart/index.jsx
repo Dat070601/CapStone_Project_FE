@@ -175,7 +175,7 @@ const Cart = () => {
 							<Box mt="5px" padding={"20px"} border={"white 1px solid"}>
 								<Text fontWeight={"medium"} color={COLOR}>Tên sách: {product.title}</Text>
 								<Text fontWeight={"light"} color={COLOR}>Số lượng: {product.quantity}</Text>
-								<Text mt="10px" fontWeight={"medium"}>{new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND'}).format(product.total)} đ</Text>
+								<Text mt="10px" fontWeight={"medium"}>{new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND'}).format(product.total)}</Text>
 							</Box>
 						)
 					})}
