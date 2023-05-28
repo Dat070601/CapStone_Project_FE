@@ -48,7 +48,28 @@ const deleteProductInCartAsync = async (url, { token, data }) => {
 	}
 }
 
+const reduceBookInCartAsync = async (url, token, { bookId, quantity }) => {
+	try {
+		const response = await axios({
+			url: `${url}/api/cart/quantity-book`,
+			headers: {
+				"Authorization": `bearer ${token}`
+			},
+			data: {
+				bookId,
+				quantity
+			},
+			method: "DELETE"
+		})
+		console.log(response.data)
+		return response.data
+	} catch (error) {
+		console.log(error)
+	}
+}
+
 export {
+	reduceBookInCartAsync,
 	fetchCartAsync,
 	addProductToCartAsync,
 	deleteProductInCartAsync

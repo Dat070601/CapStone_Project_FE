@@ -4,7 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import useLocalStorage from '../../hooks/useLocalStorage';
 import { cartSelector, decreaseProductQuantityInCart, fetchQuantityOfProduct, increaseProductQuantityInCart, updateCartAmmount } from '../../stores/reducers/CartReducer';
 import { orderSelector } from '../../stores/reducers/OrderReducer';
-import { addProductToCartAsyncThunk, deleteProductInCartAsyncThunk, fetchCartAsyncThunk } from '../../stores/thunks/CartThunk';
+import { addProductToCartAsyncThunk, deleteProductInCartAsyncThunk, fetchCartAsyncThunk, reduceBookInCartAsyncThunk } from '../../stores/thunks/CartThunk';
 import { addOrderAsyncThunk, getOrderAsyncThunk, getOrderByCustomerIdAsyncThunk } from '../../stores/thunks/OrderThunk';
 import { createPaymentAsyncThunk } from '../../stores/thunks/PaymentThunk';
 import { paymentSelector } from '../../stores/reducers/PaymentReducer';
@@ -154,7 +154,19 @@ const CartViewModel = () => {
 		}, 2000)
 	}
 
+	const reducerBookInCart = ({ bookId, quantity }) => {
+		dispatch(reduceBookInCartAsyncThunk({
+		  token: accessTokenSaved,
+		  bookId,
+		  quantity
+		}))
+		dispatch(updateCartAmmount({
+		  ammount: quantity
+		}))
+	  }
+
 	return {
+		reducerBookInCart,
 		message,
 		quantity,
 		increase,

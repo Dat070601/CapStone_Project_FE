@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { cartState } from '../initialState/CartState';
-import { addProductToCartAsyncThunk, deleteProductInCartAsyncThunk, fetchCartAsyncThunk } from '../thunks/CartThunk';
+import { addProductToCartAsyncThunk, deleteProductInCartAsyncThunk, fetchCartAsyncThunk, reduceBookInCartAsyncThunk } from '../thunks/CartThunk';
 
 const cartSlice = createSlice({
 	name: 'cart',
@@ -38,6 +38,10 @@ const cartSlice = createSlice({
 		})
 
 		builder.addCase(deleteProductInCartAsyncThunk.fulfilled, (state, action) => {
+			state.isSuccessInCart = action.payload.isSuccess
+			state.message = action.payload.message
+		})
+		builder.addCase(reduceBookInCartAsyncThunk.fulfilled, (state, action) => {
 			state.isSuccessInCart = action.payload.isSuccess
 			state.message = action.payload.message
 		})

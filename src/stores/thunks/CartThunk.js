@@ -1,4 +1,4 @@
-import { addProductToCartAsync, deleteProductInCartAsync, fetchCartAsync } from '../../api/cart';
+import { addProductToCartAsync, deleteProductInCartAsync, fetchCartAsync, reduceBookInCartAsync } from '../../api/cart';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { URL } from '../../constant';
 
@@ -44,4 +44,19 @@ const deleteProductInCartAsyncThunk = createAsyncThunk("cart/delete-product-in-c
 	}
 })
 
-export { fetchCartAsyncThunk, addProductToCartAsyncThunk, deleteProductInCartAsyncThunk };
+const reduceBookInCartAsyncThunk = createAsyncThunk("cart/reduce-book-in-cart", async (payload) => {
+	try {
+		const { token, bookId, quantity } = payload
+		const response = await reduceBookInCartAsync(URL, 
+		token,
+		{
+			bookId,
+			quantity
+		})
+		return response
+	} catch (error) {
+		console.log(error)
+	}
+});
+
+export { fetchCartAsyncThunk, addProductToCartAsyncThunk, deleteProductInCartAsyncThunk, reduceBookInCartAsyncThunk};

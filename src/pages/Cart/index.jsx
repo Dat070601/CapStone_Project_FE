@@ -11,6 +11,7 @@ import ProductDetailViewModel from '../ProductDetail/ProductDetailViewModel';
 
 const Cart = () => {
 	const { 
+		reducerBookInCart,
 		carts, 
 		increase, 
 		decrease, 
@@ -121,7 +122,7 @@ const Cart = () => {
 														id: cart.bookId,
 														title: cart.bookName,
 														quantity: cart.quantity,
-														total: cart.price * cart.quantity,
+														total: cart.totalPrice,
 													}, event) : selectProductToDelete({
 														bookId: cart.bookId
 													}, event)}
@@ -136,7 +137,13 @@ const Cart = () => {
 												<HStack>
 													<Button 
 														size={'sm'}
-														onClick={() => setQuantity(cartQuantity - 1)}
+														onClick={() => {
+															refetchCart()
+															reducerBookInCart({
+																bookId: cart.bookId,
+																quantity: 1
+															})
+														}}
 													>
 														<Icon as={AiOutlineMinus}/>
 													</Button>
@@ -144,7 +151,8 @@ const Cart = () => {
 														value={cart.quantity}
 														// defaultValue={cart.quantity}
 														type={'number'} 
-														width={'25%'} 
+														width={'20%'} 
+														textAlign={'center'}
 													/>
 													<Button 
 														size={'sm'}
