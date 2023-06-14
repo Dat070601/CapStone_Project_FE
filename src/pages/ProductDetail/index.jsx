@@ -231,7 +231,6 @@ const ProductDetail = () => {
         formik={formik}
         isOpen={isOpen} 
         onClose={onClose} 
-        
       />
     </Box>
   )

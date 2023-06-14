@@ -41,7 +41,7 @@ const ProductDetailViewModel = () => {
     onSubmit: (value) => {
       dispatch(addOrderAsyncThunk({
         token: accessTokenSaved,
-        data: {...value, paymentId: "9b9dad96-726f-4195-aacb-d952f61fca31", orderDetails: [...[], {
+        data: {...value, paymentId: "65e977c4-5a27-4bda-89d7-600550eda1e9", orderDetails: [...[], {
           bookId : book.id,
           quantity
         }]}
