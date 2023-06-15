@@ -10,7 +10,6 @@ import { BiCheckDouble, BiCartAdd } from "react-icons/bi";
 import { TbCoin } from "react-icons/tb"
 import PaginatedItems from '../../components/Pagination/Pagination';
 import ListCategory from '../../components/ListCategory/ListCategory';
-import RealTime from '../../components/RealTime/RealTime';
 
 
 const Home = () => {
@@ -23,7 +22,6 @@ const Home = () => {
 			<Box>
 				<Image src='https://res.cloudinary.com/duu07kasy/image/upload/v1679903519/Hi_Webcome_to_BookFast_1_lksdgc.png' w={'100%'}/>
 			</Box>
-			<RealTime/>
 			<Container mt={'25px'} maxW={"container.xl"}>
 				<Box  marginTop={"25px"} display={"flex"} gap={"10px"} justifyContent={'center'}>
 					<Text fontSize="3xl" fontWeight={"bold"} color={'red'}> Top 5 best seller </Text>
