@@ -8,6 +8,7 @@ import { paymentReducer } from './reducers/PaymentReducer';
 import { searchReducer } from './reducers/SearchReducer';
 import { categoryReducer }  from './reducers/CategoryReducer';
 import { reviewReducer }  from './reducers/ReviewReducer';
+import VoiceToTextReducer from './reducers/VoiceToTextReducer';
 
 const store = configureStore({
 	reducer: {
@@ -19,7 +20,8 @@ const store = configureStore({
 		paymentReducer,
 		searchReducer,
 		categoryReducer,
-		reviewReducer
+		reviewReducer,
+		VoiceToTextReducer
     // productMostSellerReducer,
     // productTopNewReducer
 	}

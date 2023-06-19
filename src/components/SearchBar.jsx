@@ -8,15 +8,17 @@ import { useNavigate } from 'react-router-dom'
 
 const SearchBar = () => {
 
-  const { input, handleInput, visible } = SearchResultViewModel()
+  const { input, handleInput, visible, getTextToSearch, isLoadingVoice } = SearchResultViewModel()
   const navigate = useNavigate()
   const navigateToResultPage = () => {
     navigate(`/search/${input.search}`)
   }
-
+  console.log()
   return (
     <div>
       <HStack>
+        <Button isLoading={isLoadingVoice} loadingText="Loading Voice.." onClick={() => {
+          getTextToSearch()}} >Search By Voice</Button>
         <FormControl position={"relative"}>
           <InputGroup>
             <InputLeftAddon children={<AiOutlineSearch />} />

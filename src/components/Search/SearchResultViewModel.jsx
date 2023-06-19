@@ -3,11 +3,15 @@ import { useDispatch, useSelector } from "react-redux"
 import { useNavigate, useParams } from "react-router-dom"
 import { searchSelector } from "../../stores/reducers/SearchReducer"
 import { searchByNameAsyncThunk } from "../../stores/thunks/SearchThunk"
+import { fetchVoiceToTextAsyncThunk } from "../../stores/thunks/VoiceToTextThunk"
+import { resetState, voiceToTextSelector } from "../../stores/reducers/VoiceToTextReducer"
 
 const SearchResultViewModel = () => {
   const params = useParams()
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const [isLoadingVoice, setIsLoadingVoice] = useState(false)
+  const { isSuccessVoice, textResponse } = useSelector(voiceToTextSelector) 
   const [ input, setInput ] = useState({
     search: ""
   })
@@ -19,6 +23,22 @@ const SearchResultViewModel = () => {
       ...input,
       [event.target.name]: event.target.value
     })
+  }
+
+  useEffect(() => {
+    if(isSuccessVoice === true){
+      setInput({
+        search: textResponse,
+      })
+      setIsLoadingVoice(false)
+    }
+    return () => {
+      dispatch(resetState())
+    }
+  },[isSuccessVoice])
+  const getTextToSearch = () => {
+    setIsLoadingVoice(true)
+    dispatch(fetchVoiceToTextAsyncThunk())
   }
 
   useEffect(() => {
@@ -49,7 +69,9 @@ const SearchResultViewModel = () => {
     results,
     input,
     handleInput,
-    navigate
+    navigate,
+    getTextToSearch,
+    isLoadingVoice
   }
 }
 

@@ -19,6 +19,7 @@ const Home = () => {
 	const { cates } = HomeViewModel()
 	return (
 		<Box bg={'gray.200'} minHeight = {"280vh"} pb={"100px"}>
+			<script src="https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg/dist/ffmpeg.min.js" crossorigin="anonymous"></script>
 			<Box>
 				<Image src='https://res.cloudinary.com/duu07kasy/image/upload/v1679903519/Hi_Webcome_to_BookFast_1_lksdgc.png' w={'100%'}/>
 			</Box>
