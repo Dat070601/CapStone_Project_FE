@@ -1,6 +1,6 @@
 import React from 'react';
 import { Flex, Spacer, Text, Button, HStack, Box, List, ListItem, Input, IconButton, Icon, Avatar, Circle } from '@chakra-ui/react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { COLOR } from '../../constant';
 import NavbarViewModel from './NavbarViewModel';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
@@ -8,12 +8,13 @@ import { useSelector } from 'react-redux';
 import { cartSelector } from '../../stores/reducers/CartReducer';
 import SearchBar from '../SearchBar';
 import Logo from '../Logo';
+import MenuItemComponent from '../MenuItem/MenuItemComponent';
 
 const Navbar = ({ children }) => {
 
-	const { isSuccess, email, signOut, customerFullName, customerId, accessTokenSaved, navigateToCartPage } = NavbarViewModel();
-	const { carts, cartAmmount } = useSelector(cartSelector)
-	console.log(email);
+	const { email, signOut, customerFullName, customerId, accessTokenSaved, navigateToCartPage } = NavbarViewModel();
+	const { cartAmmount } = useSelector(cartSelector)
+	const navigate = useNavigate()
 
 	return (
 		<div>
@@ -53,7 +54,7 @@ const Navbar = ({ children }) => {
 									color: 'blue.400',
 								}}
 							>
-								{customerFullName ? customerFullName : <Link to="/create-profile">Create your profile</Link>}
+								{customerFullName ? <MenuItemComponent title={customerFullName} method={() => navigate("/order-history")}/> : <Link to="/create-profile">Create your profile</Link>}
 							</Text>
 							<Button 
 								colorScheme={'red'}

@@ -17,6 +17,7 @@ import CreateProfile from './pages/CreateProfile';
 import Footer from './components/Footer/Footer';
 import Category from './pages/Category'
 import './index.css'
+import OrderHistory from './pages/OrderHistory/OrderHistory';
 const App = () => {
 
 	const { remove, get } = useLocalStorage()
@@ -69,6 +70,7 @@ const App = () => {
 				<Route path='/search/:keyword' element={<Search />}></Route>
 				<Route path='/payment-success' element={<PaymentResult />}></Route>
 				<Route path='/category/:categoryId' element={<Category />}></Route>
+				<Route path='/order-history' element={<OrderHistory />}></Route>
 			</Routes>
 		</div>
 	);
