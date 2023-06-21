@@ -76,21 +76,21 @@ const ProductDetail = () => {
         </Breadcrumb>
         <Flex rounded={"20px"} boxShadow={"xl"} bg="white" mt="20px" padding={"20px"}>
           <Carousel width={"350px"}>
-            {book.images?.map(image => {
+            {book?.images?.map(image => {
               return (
                 <img src={image.imageUrl} />
               )
             })}
           </Carousel>
           <Box ml="20px">
-            <Text color={COLOR} fontWeight={"semibold"} fontSize={"25px"}>{book.title}</Text>
+            <Text color={COLOR} fontWeight={"semibold"} fontSize={"25px"}>{book?.title}</Text>
             <Divider mt="10px" width={"500px"}/>
             <Box mt="10px">
-              <Text color="gray.600">Đã bán: {Intl.NumberFormat('de-DE').format(book.sold)} sản phẩm </Text>
+              <Text color="gray.600">Đã bán: {Intl.NumberFormat('de-DE').format(book?.sold)} sản phẩm </Text>
               <HStack mt="10px" gap={"20px"}>
-                <Text fontSize={"25px"} color={"tomato"}> {Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND'}).format(book.salePrice)}</Text>
-                <Text decoration={"line-through"} fontSize={"23px"} color={"gray.300"}>{Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND'}).format(book.defaultPrice)}</Text>
-                <Text color={COLOR}>(Bạn đã tiết kiệm: {Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND'}).format(book.defaultPrice - book.salePrice)})</Text>
+                <Text fontSize={"25px"} color={"tomato"}> {Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND'}).format(book?.salePrice)}</Text>
+                <Text decoration={"line-through"} fontSize={"23px"} color={"gray.300"}>{Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND'}).format(book?.defaultPrice)}</Text>
+                <Text color={COLOR}>(Bạn đã tiết kiệm: {Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND'}).format(book?.defaultPrice - book?.salePrice)})</Text>
               </HStack>
             </Box>
             <Divider mt="10px" width={"500px"}/>
@@ -113,7 +113,7 @@ const ProductDetail = () => {
                   <Icon as={AiOutlinePlus}/>
                 </Button>
                 <Box>
-                  <Text>Số lượng còn lại: {Intl.NumberFormat('de-DE').format(book.quantity)} sản phẩm</Text>
+                  <Text>Số lượng còn lại: {Intl.NumberFormat('de-DE').format(book?.quantity)} sản phẩm</Text>
                 </Box>
               </HStack>
             <Divider mt="10px" width={"500px"}/>
@@ -126,7 +126,7 @@ const ProductDetail = () => {
                 leftIcon={<AiOutlineShoppingCart />}
                 onClick={() => {
                   addProductToCart({
-                    bookId : book.id,
+                    bookId : book?.id,
                     quantity
                   })
                 }}
@@ -158,23 +158,23 @@ const ProductDetail = () => {
                 <Tbody>
                   <Tr>
                     <Td>Tác giả</Td>
-                    <Td>{book.author}</Td>
+                    <Td>{book?.author}</Td>
                   </Tr>
                   <Tr>
                     <Td>Nhà xuất bản</Td>
-                    <Td>{book.publisher}</Td>
+                    <Td>{book?.publisher}</Td>
                   </Tr>
                   <Tr>
                     <Td>Thể loại</Td>
-                    <Td>{book.categoryName}</Td>
+                    <Td>{book?.categoryName}</Td>
                   </Tr>
                   <Tr>
                     <Td>Số trang</Td>
-                    <Td>{book.numPage}</Td>
+                    <Td>{book?.numPage}</Td>
                   </Tr>
                   <Tr>
                     <Td>Tóm tắt ngắn</Td>
-                    <Td whiteSpace={"pre-wrap"}>{book.description}</Td>
+                    <Td whiteSpace={"pre-wrap"}>{book?.description}</Td>
                   </Tr>
                 </Tbody>
               </Table>
@@ -211,7 +211,7 @@ const ProductDetail = () => {
             </HStack>
             </form>
           </Box>
-          {book.reviews?.map( review => {
+          {book?.reviews?.map( review => {
             return (
               <Box mt={'10px'} rounded={"10px"} boxShadow={'xl'} padding={'10px'} bg={'gray.200'}>
                 <Box display={'flex'} gap={'10px'}>
