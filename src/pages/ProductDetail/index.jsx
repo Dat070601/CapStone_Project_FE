@@ -69,7 +69,7 @@ const ProductDetail = () => {
           <BreadcrumbItem>
               <Link to={"/"}>
                 <Text fontWeight={"semibold"}>
-                  {book.title}
+                  {book?.title}
                 </Text>
               </Link>
           </BreadcrumbItem>
