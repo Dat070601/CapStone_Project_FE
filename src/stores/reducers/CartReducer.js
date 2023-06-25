@@ -7,8 +7,11 @@ const cartSlice = createSlice({
 	initialState: cartState,
 	reducers: {
 		updateCartAmmount: (state, action) => {
-			console.log(state.cartAmmount)
-			state.cartAmmount = state.cartAmmount + action.payload?.ammount
+			console.log(state.cartAmmount)			
+			if(state.isSuccessInCart === true)
+			{
+				state.cartAmmount = state.cartAmmount + action.payload?.ammount
+			}
 		},
 		fetchQuantityOfProduct: (state, action) => {
 			state.cartQuantity = action.payload.quantity
