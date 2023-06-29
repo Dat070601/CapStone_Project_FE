@@ -10,7 +10,6 @@ import NavbarViewModel from '../../components/Navbar/NavbarViewModel'
 
 const PaymentResult = () => {
 
-  const location = useLocation()
   const { loading } = PaymentResultViewModel()
   const [connection, setConnection] = useState(null);
   const { isSuccess, email, signOut, customerFullName, customerId, accessTokenSaved, navigateToCartPage } = NavbarViewModel();
@@ -43,7 +42,7 @@ const PaymentResult = () => {
     <Box mt={"100px"} h={"50vh"}>
       {!loading ? <Fade in={!loading}><VStack>
         <Icon as={BsCheckCircle} width="300px" height={"50px"} color={COLOR} />
-        <Text fontSize={"40px"} fontWeight={"light"} color="gray.700">{location.state?.message && "Đặt hàng thành công"}</Text>
+        <Text fontSize={"40px"} fontWeight={"light"} color="gray.700">Đặt hàng thành công</Text>
         <Text>Cảm ơn vì đã mua hàng cùng chúng tôi</Text>
         <Box>
           <Link to="/home" style={{ color: COLOR }}>Tiếp tục mua sắm</Link>
