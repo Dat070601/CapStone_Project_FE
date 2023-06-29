@@ -42,7 +42,7 @@ const OrderViewModel = () => {
 
   const handleNavigateToBuyingSuccessPage = () => {
     navigate("/payment-success", { replace: false, state: { message: "Đặt hàng thành công" }})
-  }
+  } 
 
   const handleAcceptOrderWithShippingMethod = async ({ orderId, statusName }) => {
     dispatch(changeStatusOfOrderCashAsyncThunk({
