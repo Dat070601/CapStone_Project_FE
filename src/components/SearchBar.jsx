@@ -1,10 +1,11 @@
-import { Button, FormControl, HStack, Input, InputGroup, InputLeftAddon } from '@chakra-ui/react'
+import { Button, FormControl, HStack, Input, InputGroup, InputLeftAddon, Text } from '@chakra-ui/react'
 import { AiOutlineSearch } from 'react-icons/ai'
 import React, { useState } from 'react'
 import { COLOR } from '../constant'
 import SearchResultBox from './Search/SearchResultBox'
 import SearchResultViewModel from './Search/SearchResultViewModel'
 import { useNavigate } from 'react-router-dom'
+import { BsFillMicFill } from 'react-icons/bs'
 
 const SearchBar = () => {
 
@@ -17,8 +18,8 @@ const SearchBar = () => {
   return (
     <div>
       <HStack>
-        <Button isLoading={isLoadingVoice} loadingText="Loading Voice.." onClick={() => {
-          getTextToSearch()}} >Search By Voice</Button>
+        <Button isLoading={isLoadingVoice} loadingText="Loading Voice.." colorScheme={isLoadingVoice ? "red" : "blue"} px={10}  onClick={() => {
+          getTextToSearch()}}><BsFillMicFill/></Button>
         <FormControl position={"relative"}>
           <InputGroup>
             <InputLeftAddon children={<AiOutlineSearch />} />
@@ -26,7 +27,7 @@ const SearchBar = () => {
           </InputGroup>
           {visible ? <SearchResultBox /> : ""}
         </FormControl>
-        <Button onClick={navigateToResultPage} background={COLOR} color={"white"}>Search</Button>
+        <Button onClick={navigateToResultPage} background={COLOR} color={"white"}>Tìm kiếm</Button>
       </HStack>
     </div>
   )

@@ -6,10 +6,18 @@ import './Order.css'
 import Loading from '../../components/Loading'
 import { MdPayment } from 'react-icons/md'
 import { createPaymentAsync } from '../../api/payment'
+import AlertModal from '../../components/AlertModal'
 
 const Order = () => {
 
-  const { order, loading, cancelOrder, isCancelLoading, navigateToPaymentPage } = OrderViewModel()
+  const { 
+    order, 
+    loading, 
+    cancelOrder, 
+    isCancelLoading, 
+    navigateToPaymentPage,
+    handleAcceptOrderWithShippingMethod
+  } = OrderViewModel()
 
   return (
     <div className="bg">
@@ -37,6 +45,18 @@ const Order = () => {
             mt="20px" 
             w={"100%"} 
             leftIcon={<MdPayment />}
+            onClick={() => handleAcceptOrderWithShippingMethod({
+              orderId: order.orderId,
+              statusName: "Đã Xác Nhận"
+            })}
+            >Thanh toán bằng tiền mặt
+          </Button>
+          <Button 
+            bg={COLOR} 
+            color={"white"} 
+            mt="20px" 
+            w={"100%"} 
+            leftIcon={<MdPayment />}
             onClick={() => navigateToPaymentPage()}
             >Đặt hàng với VNPay
           </Button>
@@ -50,7 +70,7 @@ const Order = () => {
             onClick={() => {
               cancelOrder({
                 orderId: order.orderId,
-                statusOrder: "Cancel"
+                statusName: "Đã Hủy"
               })
             }}
             >Hủy Đơn Hàng

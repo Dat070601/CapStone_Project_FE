@@ -18,13 +18,13 @@ const OrderAccordion = ({ orderTitle, date, messageOrder, paymentMethod, phoneNu
               <Text>Tin nhắn đặt hàng: <Box as={"span"} fontWeight={"bold"}>{messageOrder === null || "" ? "Không có tin nhắn" : messageOrder}</Box></Text>
               <Text>Phương thức thanh toán: <Box as={"span"} fontWeight={"bold"}>{paymentMethod}</Box></Text>
               <Text>Số điện thoại: <Box as={"span"} fontWeight={"bold"}>{phoneNumber}</Box></Text>
-              <Text>Địa chỉ: <Box as={"span"} fontWeight={"bold"}>{`${address}/${district}/${city}`}</Box></Text>
+              <Text>Địa chỉ: <Box as={"span"} fontWeight={"bold"}>{`${address}, quận ${district}, thành phố ${city}`}</Box></Text>
             </Box>
             <Box display={"flex"} justifyContent={"space-between"} mx="10px" my="20px">
               <Text fontSize={"20px"}>Tổng thanh toán: <Box as={"span"} fontWeight={"bold"}>{price}</Box></Text>
               <Text>Trạng thái: <Box as={"span"} fontWeight={"bold"}>
                 <Menu>
-                  <MenuButton disabled={status === "Chờ Xác Nhận" || status === "Đã Thanh Toán" ? false : true}>{status}</MenuButton>
+                  <MenuButton disabled={status === "Chờ Xác Nhận" || status === "Đã Thanh Toán" || status === "Đã Xác Nhận" ? false : true}>{status}</MenuButton>
                   <MenuList>
                     <MenuItem onClick={handleDisposeOrder}>
                       <Text>Hủy đơn hàng</Text>

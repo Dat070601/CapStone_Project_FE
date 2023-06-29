@@ -140,7 +140,7 @@ const CartViewModel = () => {
 		dispatch(addOrderAsyncThunk({
 			token: accessTokenSaved,
 			data: {
-				"paymentId": "65E977C4-5A27-4BDA-89D7-600550EDA1E9",
+				"paymentId": "9b9dad96-726f-4195-aacb-d952f61fca31",
 				"phoneNumber": values.phoneNumber,
 				"address": values.address,
 				"city": values.city,

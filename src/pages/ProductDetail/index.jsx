@@ -136,7 +136,7 @@ const ProductDetail = () => {
               <Button 
                 loadingText={"Buy now..."}
                 isLoading={loadingBuyProduct}
-                isDisabled={accessTokenSaved && quantity > 0 ? false : true}
+                isDisabled={accessTokenSaved && quantity > 0  && quantity <= book?.quantity ? false : true}
                 color={COLOR} 
                 width={"100%"} 
                 variant="outline" 

@@ -6,18 +6,18 @@ import React from 'react'
 
 const MenuItemComponent = ({ title, method }) => {
 
-    return (
-        <Menu>
-            <MenuButton  as={Button} rightIcon={<ChevronDownIcon />}>
-                {title}
-            </MenuButton>        
-            <MenuList>
-            <MenuItem>
-                <MenuItem onClick={() => method()}>Xem lịch sử mua hàng</MenuItem>
-            </MenuItem>        
-            </MenuList>
-        </Menu>
-    )
+  return (
+    <Menu>
+      <MenuButton  as={Button} rightIcon={<ChevronDownIcon />}>
+          {title}
+        </MenuButton>        
+      <MenuList>
+        <MenuItem>
+            <MenuItem onClick={() => method()}>Xem lịch sử mua hàng</MenuItem>
+        </MenuItem>        
+      </MenuList>
+    </Menu>
+  )
 }
 
 export default MenuItemComponent

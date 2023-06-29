@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit"
-import { addOrderAsync, changeStatusOfOrderAsync, getOrderAsyncById, getOrderByCustomerIdAsync } from "../../api/order"
+import { addOrderAsync, changeStatusOfOrderAsync, changeStatusOfOrderCashAsync, getOrderAsyncById, getOrderByCustomerIdAsync } from "../../api/order"
 import { createPaymentAsync } from "../../api/payment"
 import { URL } from "../../constant"
 
@@ -40,7 +40,20 @@ const changeStatusOfOrderAsyncThunk = createAsyncThunk("/order/change-status-of-
   try {
     const response = await changeStatusOfOrderAsync(URL, {
       orderId: payload.orderId,
-      statusOrder: payload.statusOrder
+      statusName: payload.statusName
+    })
+    console.log(response)
+    return response
+  } catch (error) {
+    console.log(error)
+  }
+})
+
+const changeStatusOfOrderCashAsyncThunk = createAsyncThunk("/order/change-status-of-order-cash", async (payload) => {
+  try {
+    const response = await changeStatusOfOrderCashAsync(URL, {
+      orderId: payload.orderId,
+      statusName: payload.statusName
     })
     console.log(response)
     return response
@@ -53,5 +66,6 @@ export {
   addOrderAsyncThunk,
   getOrderAsyncThunk,
   getOrderByCustomerIdAsyncThunk,
-  changeStatusOfOrderAsyncThunk
+  changeStatusOfOrderAsyncThunk,
+  changeStatusOfOrderCashAsyncThunk
 }

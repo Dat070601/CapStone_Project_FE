@@ -76,8 +76,8 @@ const Home = () => {
 				<Box ml={"10px"}>
 					<ListCategory mainCategories={cates}/>
 				</Box>				
-				<Container mt={"20px"} maxW={"container.xl"}>
-				<PaginatedItems/>
+				<Container  mt={"20px"} maxW={"container.xl"}>
+					<PaginatedItems />
 				</Container>
 			</Box>
     	</Box>
