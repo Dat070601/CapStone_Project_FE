@@ -137,6 +137,7 @@ const Cart = () => {
 												<HStack>
 													<Button 
 														size={'sm'}
+														isDisabled = {cart.quantity <= 1 ? true : false}
 														onClick={() => {
 															refetchCart()
 															reducerBookInCart({
