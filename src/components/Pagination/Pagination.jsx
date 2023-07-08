@@ -35,7 +35,7 @@ const Pagination = () => {
   return (
     <>
       <Box mb="100px" display={"flex"} flexWrap="wrap" gap={"25px"}>
-        {data.map((item) => (
+        {data?.map((item) => (
           <Card 
             productId={item.id}
             productName={item.title}  

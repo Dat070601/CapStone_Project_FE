@@ -16,7 +16,7 @@ const Category = () => {
         </Box>
         <Container mt={"50px"} maxW={"container.xl"}>
               <Box display={"flex"} flexWrap={"wrap"} gap={'20px'}>
-                {cate.books?.map(book => {
+                {cate?.books?.map(book => {
                     return(
                       <Card 
                       productId={book.id}

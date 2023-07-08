@@ -16,7 +16,7 @@ const PaymentResult = () => {
   const connectionRef = useRef(null);
   useEffect(() => {
     const newConnection = new signalR.HubConnectionBuilder()
-    .withUrl("https://localhost:7149/myhub")
+    .withUrl("https://dat-bookstore.azurewebsites.net/myhub")
     .build();
 
     newConnection.start().then(() => {
