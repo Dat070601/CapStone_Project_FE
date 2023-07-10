@@ -42,11 +42,13 @@ const ProductDetail = () => {
       reviewText: ''
     },
     
-    onSubmit: (values, { resetForm }) => {
-      createReviewAsync({values})
-      dispatch(getProductByIdAsyncThunk({
-        id: book.id
-      }))
+    onSubmit:  (values, { resetForm }) => {
+      createReviewAsync({values}).then(() =>
+      {
+        dispatch(getProductByIdAsyncThunk({
+          id: book.id
+        }))
+      })
       resetForm()
     }
   })
@@ -56,7 +58,7 @@ const ProductDetail = () => {
       { visible ? (
         <Alert status={isSuccessInCart == true ? 'success' : 'error'} position={'absolute'} w={"400px"} ml={"5px"}>
           <AlertIcon />
-          <AlertTitle>{isSuccessInCart == true ? "Success!" : "Sorry!"}</AlertTitle>
+          <AlertTitle>{isSuccessInCart == true ? "Thành Công!" : "Thất bại!"}</AlertTitle>
           <AlertDescription>{message}</AlertDescription>
         </Alert>):<></>}
       {!loading ? (<Container maxW={"container.lg"}>

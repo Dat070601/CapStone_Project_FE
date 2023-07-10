@@ -50,10 +50,10 @@ const ProductDetailViewModel = () => {
     }
   })
 
-  const createReviewAsync = ({
+  const createReviewAsync = async({
 		values,
 	}) => {
-		dispatch(addReviewAsyncThunk({
+		await dispatch(addReviewAsyncThunk({
 			token: accessTokenSaved,
 			data: {
         bookId: book.id,

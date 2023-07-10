@@ -8,7 +8,8 @@ const AuthSlice = createSlice({
 	reducers: {}, 
 	extraReducers: (builder) => {
 		builder.addCase(loginAsyncThunk.fulfilled, (state, action) => {
-			if (action.payload.isSuccess == false)
+			console.log(action.payload);
+			if (action.payload.isSuccess === false)
 			{
 				state.isSuccess = action.payload.isSuccess;
 				state.message = action.payload.message;
@@ -16,7 +17,7 @@ const AuthSlice = createSlice({
 			else {
 				state.isSuccess = action.payload.isSuccess;
 				state.isActive = action.payload.isActive;
-				state.message = 'Welcome back';
+				state.message = action.payload.message;
 				state.accessToken = action.payload.accessToken;
 				state.refreshToken = action.payload.refreshToken;
 			}
